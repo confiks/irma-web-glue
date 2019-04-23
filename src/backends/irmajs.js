@@ -38,7 +38,7 @@ export default class IrmaJSBackend {
         .then(({ sessionPtr, token }) => this._handleSession(sessionPtr, token))
         .catch((m) => {
           console.error("Irma startSession failed:", m);
-          stateMachine.transition('fail')
+          this._stateMachine.transition('fail')
         });
   }
 
@@ -82,7 +82,7 @@ export default class IrmaJSBackend {
         })
         .catch((m) => {
           console.error("Irma setupSession failed:", m);
-          stateMachine.transition('fail')
+          this._stateMachine.transition('fail')
         })
   }
 
